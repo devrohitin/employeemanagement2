@@ -1,6 +1,6 @@
-# Basic Employee Management System (Java + H2)
+# Basic Employee Management System (Spring Boot + PostgreSQL)
 
-A simple employee management system built in **Java** with an **H2 database**.
+Simple Employee Management backend using **Spring Boot** and **PostgreSQL**.
 
 ## Main points
 - Add employee
@@ -13,19 +13,35 @@ A simple employee management system built in **Java** with an **H2 database**.
 
 ## Tech stack
 - Java 17
-- H2 Database (JDBC)
+- Spring Boot (Web + Spring Data JPA)
+- PostgreSQL
 - Maven
-- JUnit 5 (tests)
+
+## Configure PostgreSQL
+Default config is in `src/main/resources/application.properties`:
+- DB: `employee_db`
+- User: `postgres`
+- Password: `postgres`
+
+Update these values as needed.
 
 ## Run
 ```bash
-mvn clean compile
-mvn -q exec:java -Dexec.mainClass="com.example.employeemanagement.Main"
+mvn spring-boot:run
 ```
+
+## API endpoints
+- `POST /api/employees`
+- `GET /api/employees`
+- `GET /api/employees?department=Engineering`
+- `GET /api/employees/{id}`
+- `PUT /api/employees/{id}`
+- `DELETE /api/employees/{id}`
+- `GET /api/employees/payroll/total`
 
 ## Test
 ```bash
 mvn test
 ```
 
-The app seeds a few employees on first run.
+App seeds sample employees automatically if table is empty.

@@ -1,43 +1,67 @@
 package com.example.employeemanagement;
 
-public class Employee {
-    private final int id;
-    private final String name;
-    private final String department;
-    private final String role;
-    private final double salary;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-    public Employee(int id, String name, String department, String role, double salary) {
-        this.id = id;
+@Entity
+public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String department;
+    private String role;
+    private Double salary;
+
+    public Employee() {
+    }
+
+    public Employee(String name, String department, String role, Double salary) {
         this.name = name;
         this.department = department;
         this.role = role;
         this.salary = salary;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getDepartment() {
         return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
     public String getRole() {
         return role;
     }
 
-    public double getSalary() {
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public Double getSalary() {
         return salary;
     }
 
-    @Override
-    public String toString() {
-        return "ID: " + id + " | Name: " + name + " | Department: " + department +
-                " | Role: " + role + " | Salary: " + String.format("%.2f", salary);
+    public void setSalary(Double salary) {
+        this.salary = salary;
     }
 }
